@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const mongokey = require("./config/keys");
 
 const app = express();
 
@@ -26,9 +27,7 @@ app.use((err, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://Archit:archit@cluster0-ketcc.mongodb.net/burger-builder?retryWrites=true&w=majority"
-  )
+  .connect(mongokey)
   .then((res) => {
     console.log("connected!");
     app.listen(8080);
